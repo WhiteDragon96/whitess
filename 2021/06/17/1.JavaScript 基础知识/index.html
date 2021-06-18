@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1.JavaScript 基础知识 | 萤火之森</title><meta name="keywords" content="JavaScript"><meta name="author" content="White"><meta name="copyright" content="White"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习JavaScript的基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.JavaScript 基础知识">
+<meta property="og:url" content="https://whitedragon96.github.io/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="萤火之森">
+<meta property="og:description" content="学习JavaScript的基础知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif">
+<meta property="article:published_time" content="2021-06-17T02:49:26.428Z">
+<meta property="article:modified_time" content="2021-06-17T02:49:26.428Z">
+<meta property="article:author" content="White">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif"><link rel="shortcut icon" href="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/img火.png"><link rel="canonical" href="https://whitedragon96.github.io/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1.JavaScript 基础知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-17 10:49:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/2000.svg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">萤火之森</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">1.JavaScript 基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-17T02:49:26.428Z" title="发表于 2021-06-17 10:49:26">2021-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-17T02:49:26.428Z" title="更新于 2021-06-17 10:49:26">2021-06-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="1.JavaScript 基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a></li>
+<li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F">严格模式</a></li>
+<li><a href="#%E4%BA%A4%E4%BA%92alertprompt-%E5%92%8C-confirm">交互：alert、prompt 和 confirm</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97%E7%AC%A6%E6%95%B0%E5%AD%A6">基础运算符，数学</a></li>
+<li><a href="#%E5%80%BC%E7%9A%84%E6%AF%94%E8%BE%83">值的比较</a></li>
+<li><a href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AFif-%E5%92%8C-">条件分支：if 和 ‘?’</a></li>
+<li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑运算符</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a><ul>
+<li><a href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">回调函数</a></li>
+<li><a href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0">匿名函数</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></li>
+<li><a href="#javascript-%E7%89%B9%E6%80%A7">JavaScript 特性</a></li>
+</ul>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>我们可以使用 var、let 或 const 声明变量来存储数据。</p>
+<ul>
+<li>let — 现代的变量声明方式。</li>
+<li>var — 老旧的变量声明方式。一般情况下，我们不会再使用它。</li>
+<li>const — 类似于 let，但是变量的值无法被修改。</li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>JavaScript 中有 8 种基本的数据类型（注：7 种原始类型和 1 种引用类型）。</p>
+<ul>
+<li><p>Number类型，代表整数和浮点数。</p>
+</li>
+<li><p>BigInt 类型，number” 类型无法表示大于 (253-1)，或小于 -(253-1) 的整数</p>
+</li>
+<li><p>String类型、Boolean类型</p>
+</li>
+<li><p>object 类型和 symbol 类型，object 则用于储存数据集合和更复杂的实体。</p>
+</li>
+<li><p>typeof 运算符，typeof 运算符返回参数的类型 </p>
+<pre><code>typeof 0 // &quot;number&quot;
+typeof 10n // &quot;bigint&quot;  
+</code></pre>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><p>为了完全启用现代 JavaScript 的所有特性，我们应该在脚本顶部写上 “use strict” 指令。</p>
+<pre><code>  &#39;use strict&#39;;
+  ...
+</code></pre>
+<h3 id="交互：alert、prompt-和-confirm"><a href="#交互：alert、prompt-和-confirm" class="headerlink" title="交互：alert、prompt 和 confirm"></a>交互：alert、prompt 和 confirm</h3></li>
+<li><p>alert  弹出的这个带有信息的小窗口被称为 模态窗。“modal” 意味着用户不能与页面的其他部分（例如点击其他按钮等）进行交互，直到他们处理完窗口。在上面示例这种情况下 —— 直到用户点击“确定”按钮。</p>
+</li>
+<li><p>prompt，title： 显示给用户的文本，default：可选的第二个参数，指定 input 框的初始值。</p>
+<pre><code>let age = prompt(&#39;How old are you?&#39;, 100);
+alert(`You are $&#123;age&#125; years old!`); // You are 100 years old!
+</code></pre>
+</li>
+<li><p>confirm， 函数显示一个带有 question 以及确定和取消两个按钮的模态窗口。点击确定返回 true，点击取消返回 false。</p>
+<pre><code>  let isBoss = confirm(&quot;Are you the boss?&quot;);
+  alert( isBoss ); // 如果“确定”按钮被按下，则显示 true
+</code></pre>
+<h3 id="基础运算符，数学"><a href="#基础运算符，数学" class="headerlink" title="基础运算符，数学"></a>基础运算符，数学</h3><p>支持以下数学运算：</p>
+</li>
+<li><p>加法 +,</p>
+</li>
+<li><p>减法 -,</p>
+</li>
+<li><p>乘法 *,</p>
+</li>
+<li><p>除法 /,</p>
+</li>
+<li><p>取余 %,</p>
+</li>
+<li><p>求幂 **.</p>
+<pre><code>alert( 2 ** 2 ); // 4  (2 * 2，自乘 2 次)
+alert( 4 ** (1/2) ); // 2（1/2 次方与平方根相同)
+</code></pre>
+<h3 id="值的比较"><a href="#值的比较" class="headerlink" title="值的比较"></a>值的比较</h3><ul>
+<li><code>&gt;</code>  &lt; == !=<pre><code>== 存在一个问题，它不能区分出 0 和 false
+alert( 0 == false ); // true
+alert( &#39;&#39; == false ); // true
+</code></pre>
+这是因为在比较不同类型的值时，处于相等判断符号 == 两侧的值会先被转化为数字。空字符串和 false 也是如此，转化后它们都为数字 0。</li>
+<li>严格相等运算符 === 在进行比较时不会做任何的类型转换。<pre><code>    alert( 0 === false ); // false，因为被比较值的数据类型不同
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="条件分支：if-和-‘-’"><a href="#条件分支：if-和-‘-’" class="headerlink" title="条件分支：if 和 ‘?’"></a>条件分支：if 和 ‘?’</h3><ul>
+<li>if(…) 语句计算括号里的条件表达式，如果计算结果是 true，就会执行对应的代码块。<pre><code>if (&quot;0&quot;) &#123; // 只要字符串不为空，都是true
+ alert( &#39;Hello&#39; );
+&#125;   
+</code></pre>
+</li>
+<li> 条件运算符 ‘?’,三元运算符</li>
+</ul>
+<pre><code>  let result = condition ? value1 : value2;
+</code></pre>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>JavaScript 中有三个逻辑运算符：||（或），&amp;&amp;（与），!（非）。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><pre><code>  我们的新函数可以通过名称调用：showMessage()。
+  function showMessage() &#123;
+   alert( &#39;Hello everyone!&#39; );
+  &#125;
+
+  showMessage();
+  showMessage();
+</code></pre>
+<ul>
+<li>作为参数传递给函数的值，会被复制到函数的局部变量。</li>
+<li>函数可以访问外部变量。但它只能从内到外起作用。函数外部的代码看不到函数内的局部变量。</li>
+<li>函数可以返回值。如果没有返回值，则其返回的结果是 undefined。<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4>我们写一个包含三个参数的函数 ask(question, yes, no)：</li>
+</ul>
+<p>question<br>关于问题的文本</p>
+<p>yes<br>当回答为 “Yes” 时，要运行的脚本</p>
+<p>no<br>当回答为 “No” 时，要运行的脚本</p>
+<p>函数需要提出 question（问题），并根据用户的回答，调用 yes() 或 no()：</p>
+<pre><code>  function ask(question, yes, no) &#123;
+if (confirm(question)) yes()
+else no();
+&#125;
+
+function showOk() &#123;
+alert( &quot;You agreed.&quot; );
+&#125;
+
+function showCancel() &#123;
+alert( &quot;You canceled the execution.&quot; );
+&#125;
+
+// 用法：函数 showOk 和 showCancel 被作为参数传入到 ask
+ask(&quot;Do you agree?&quot;, showOk, showCancel);
+</code></pre>
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>  这里直接在 ask(…) 调用内进行函数声明。这两个函数没有名字</p>
+<pre><code>  ask(
+&quot;Do you agree?&quot;,
+function() &#123; alert(&quot;You agreed.&quot;); &#125;,
+function() &#123; alert(&quot;You canceled the execution.&quot;); &#125;
+);
+</code></pre>
+<ul>
+<li>函数声明：在主代码流中声明为单独的语句的函数。<pre><code>  // 函数声明
+  function sum(a, b) &#123;
+  return a + b;
+  &#125;
+</code></pre>
+</li>
+<li>函数表达式：在一个表达式中或另一个语法结构中创建的函数。下面这个函数是在赋值表达式 = 右侧创建的<pre><code>      // 函数表达式
+  let sum = function(a, b) &#123;
+  return a + b;
+  &#125;;
+</code></pre>
+</li>
+</ul>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><pre><code>  let sum = (a, b) =&gt; a + b;
+
+  /* 这个箭头函数是下面这个函数的更短的版本：
+
+  let sum = function(a, b) &#123;
+  return a + b;
+  &#125;; */
+
+  // 当只有一个参数时 可以去了括号
+  let alone = a =&gt; console.log(a)
+  alone(666);
+  // 没有参数时要保留括号
+  let empty = () =&gt; console.log(&quot;empty paramter&quot;)
+  empty();
+</code></pre>
+<h3 id="JavaScript-特性"><a href="#JavaScript-特性" class="headerlink" title="JavaScript 特性"></a>JavaScript 特性</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">White</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://whitedragon96.github.io/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">https://whitedragon96.github.io/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://whitedragon96.github.io" target="_blank">萤火之森</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/WeChatPay.png" target="_blank"><img class="post-qr-code-img" src="/img/WeChatPay.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/ALiPay.png" target="_blank"><img class="post-qr-code-img" src="/img/ALiPay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2.代码质量</div></div></a></div><div class="next-post pull-right"><a href="/2021/06/17/matter/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">页面标题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/17/2.代码质量/" title="2.代码质量"><img class="cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-17</div><div class="title">2.代码质量</div></div></a></div><div><a href="/2021/06/17/3.Object（对象）：基础知识/" title="3.Object对象基础知识"><img class="cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-17</div><div class="title">3.Object对象基础知识</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/2000.svg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">White</div><div class="author-info__description">第一次的遇见，便注定了是永生</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WhiteDragon96"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WhiteDragon96" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/C805609108@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">👋 Hi, I’m @WhiteDragon96</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">严格模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%EF%BC%9Aalert%E3%80%81prompt-%E5%92%8C-confirm"><span class="toc-number">4.</span> <span class="toc-text">交互：alert、prompt 和 confirm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E6%95%B0%E5%AD%A6"><span class="toc-number">5.</span> <span class="toc-text">基础运算符，数学</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">6.</span> <span class="toc-text">值的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%EF%BC%9Aif-%E5%92%8C-%E2%80%98-%E2%80%99"><span class="toc-number">7.</span> <span class="toc-text">条件分支：if 和 ‘?’</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">8.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">9.1.</span> <span class="toc-text">回调函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">9.2.</span> <span class="toc-text">匿名函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript-%E7%89%B9%E6%80%A7"><span class="toc-number">11.</span> <span class="toc-text">JavaScript 特性</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="3.Object对象基础知识"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.Object对象基础知识"/></a><div class="content"><a class="title" href="/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="3.Object对象基础知识">3.Object对象基础知识</a><time datetime="2021-06-17T09:06:12.412Z" title="发表于 2021-06-17 17:06:12">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" title="2.代码质量"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2.代码质量"/></a><div class="content"><a class="title" href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" title="2.代码质量">2.代码质量</a><time datetime="2021-06-17T09:05:22.272Z" title="发表于 2021-06-17 17:05:22">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="1.JavaScript 基础知识"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.JavaScript 基础知识"/></a><div class="content"><a class="title" href="/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="1.JavaScript 基础知识">1.JavaScript 基础知识</a><time datetime="2021-06-17T02:49:26.428Z" title="发表于 2021-06-17 10:49:26">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/matter/" title="页面标题"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="页面标题"/></a><div class="content"><a class="title" href="/2021/06/17/matter/" title="页面标题">页面标题</a><time datetime="2021-06-16T16:00:00.000Z" title="发表于 2021-06-17 00:00:00">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/15/hello-world/" title="Hello World"><img src="/img/%E7%9A%AE%E5%8D%A1%E4%B8%98.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/06/15/hello-world/" title="Hello World">Hello World</a><time datetime="2021-06-15T03:02:40.169Z" title="发表于 2021-06-15 11:02:40">2021-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By White</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://whitedragon96.github.io/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/'
+    this.page.identifier = '2021/06/17/1.JavaScript 基础知识/'
+    this.page.title = '1.JavaScript 基础知识'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://white-7.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

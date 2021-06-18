@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3.Object对象基础知识 | 萤火之森</title><meta name="keywords" content="JavaScript"><meta name="author" content="White"><meta name="copyright" content="White"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习JavaScript的基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.Object对象基础知识">
+<meta property="og:url" content="https://whitedragon96.github.io/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="萤火之森">
+<meta property="og:description" content="学习JavaScript的基础知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif">
+<meta property="article:published_time" content="2021-06-17T09:06:12.412Z">
+<meta property="article:modified_time" content="2021-06-17T09:06:12.412Z">
+<meta property="article:author" content="White">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif"><link rel="shortcut icon" href="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/img火.png"><link rel="canonical" href="https://whitedragon96.github.io/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '3.Object对象基础知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-17 17:06:12'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/2000.svg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">萤火之森</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">3.Object对象基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-17T09:06:12.412Z" title="发表于 2021-06-17 17:06:12">2021-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-17T09:06:12.412Z" title="更新于 2021-06-17 17:06:12">2021-06-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaScript/">JavaScript</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="3.Object对象基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+<li><a href="#object%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">Object（对象）：基础知识</a><ul>
+<li><a href="#%E5%AF%B9%E8%B1%A1">对象</a><ul>
+<li><a href="#%E6%96%B9%E6%8B%AC%E5%8F%B7">方括号</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">计算属性</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E7%AE%80%E5%86%99">属性值简写</a></li>
+<li><a href="#%E5%B1%9E%E6%80%A7%E5%AD%98%E5%9C%A8%E6%80%A7%E6%B5%8B%E8%AF%95in-%E6%93%8D%E4%BD%9C%E7%AC%A6">属性存在性测试，“in” 操作符</a></li>
+<li><a href="#forin-%E5%BE%AA%E7%8E%AF">“for…in” 循环</a></li>
+<li><a href="#%E5%83%8F%E5%AF%B9%E8%B1%A1%E4%B8%80%E6%A0%B7%E6%8E%92%E5%BA%8F">像对象一样排序</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8%E5%92%8C%E5%A4%8D%E5%88%B6">对象引用和复制</a></li>
+<li><a href="#%E5%8F%AF%E9%80%89%E9%93%BE--">可选链 “?.” </a><ul>
+<li><a href="#%E7%9F%AD%E8%B7%AF%E6%95%88%E5%BA%94">短路效应</a></li>
+<li><a href="#%E5%85%B6%E5%AE%83%E5%8F%98%E4%BD%93">其它变体：?.()，?.[]</a></li>
+</ul>
+</li>
+<li><a href="#symbol-%E7%B1%BB%E5%9E%8B">Symbol 类型</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1--%E5%8E%9F%E5%A7%8B%E5%80%BC%E8%BD%AC%E6%8D%A2">对象 — 原始值转换</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Object（对象）：基础知识"><a href="#Object（对象）：基础知识" class="headerlink" title="Object（对象）：基础知识"></a>Object（对象）：基础知识</h2><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>我们可以通过使用带有可选 属性列表 的花括号 {…} 来创建对象。一个属性就是一个键值对（“key: value”），其中键（key）是一个字符串（也叫做属性名），值（value）可以是任何值。</p>
+<pre><code class="JavaScript">      let user = new Object(); // “构造函数” 的语法
+      let user = &#123;     // 一个对象
+          name: &quot;John&quot;,  // 键 &quot;name&quot;，值 &quot;John&quot;
+          age: 30,        // 键 &quot;age&quot;，值 30
+          &quot;like bird&quot; : true,
+      &#125;;
+</code></pre>
+<p>属性有键（或者也可以叫做“名字”或“标识符”），位于冒号 “:” 的前面，值在冒号的右边。</p>
+<p>在 user 对象中，有两个属性：</p>
+<ol>
+<li>第一个的键是 “name”，值是 “John”。</li>
+<li>第二个的键是 “age”，值是 30。</li>
+</ol>
+<h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>对于多词属性，点操作就不能用了：</p>
+<pre><code class="JavaScript">  // 这将提示有语法错误
+  user.likes birds = true
+</code></pre>
+<pre><code class="JavaScript">  有另一种方法，就是使用方括号，可用于任何字符串：
+
+  let user = &#123;&#125;;
+
+  // 设置
+  user[&quot;likes birds&quot;] = true;
+
+  // 读取
+  alert(user[&quot;likes birds&quot;]); // true
+
+  // 删除
+  delete user[&quot;likes birds&quot;];
+</code></pre>
+<p>在这里，变量 key 可以是程序运行时计算得到的，也可以是根据用户的输入得到的。然后我们可以用它来访问属性。这给了我们很大的灵活性。</p>
+<pre><code class="JavaScript">  let user = &#123;
+  name: &quot;John&quot;,
+  age: 30
+  &#125;;
+
+  let key = prompt(&quot;What do you want to know about the user?&quot;, &quot;name&quot;);
+
+  // 访问变量
+  alert( user[key] ); // John（如果输入 &quot;name&quot;）
+  //点符号不能以类似的方式使用：
+  alert( user.key ) // undefined
+</code></pre>
+<h4 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h4><p>当创建一个对象时，我们可以在对象字面量中使用方括号。这叫做 计算属性。</p>
+<pre><code class="JavaScript">  let fruit = prompt(&quot;Which fruit to buy?&quot;, &quot;apple&quot;);
+
+  let bag = &#123;
+  [fruit]: 5, // 属性名是从 fruit 变量中得到的
+  &#125;;
+
+  alert( bag.apple ); // 5 如果 fruit=&quot;apple&quot;
+</code></pre>
+<p>方括号比点符号更强大。它允许任何属性名和变量，但写起来也更加麻烦。</p>
+<p>所以，大部分时间里，当属性名是已知且简单的时候，就使用点符号。如果我们需要一些更复杂的内容，那么就用方括号。</p>
+<h3 id="属性值简写"><a href="#属性值简写" class="headerlink" title="属性值简写"></a>属性值简写</h3><p>在实际开发中，我们通常用已存在的变量当做属性名。</p>
+<pre><code class="JavaScript">  &lt;script&gt;
+      function makeUser(name,age)&#123;
+          return&#123;
+              name: name,
+              age: age,
+              // 其他属性
+          &#125;
+      &#125;
+      let user = makeUser(&quot;John&quot;,18)
+      console.log(user) //&#123;name: &quot;John&quot;, age: 18&#125;
+  &lt;/script&gt;
+</code></pre>
+<p>在上面的例子中，属性名跟变量名一样。这种通过变量生成属性的应用场景很常见，在这有一种特殊的 属性值缩写 方法，使属性名变得更短。</p>
+<p>可以用 name 来代替 name:name 像下面那样：</p>
+<pre><code class="JavaScript">  function makeUser(name, age) &#123;
+  return &#123;
+      name, // 与 name: name 相同
+      age,  // 与 age: age 相同
+      // ...
+  &#125;;
+  &#125;
+</code></pre>
+<h3 id="属性存在性测试，“in”-操作符"><a href="#属性存在性测试，“in”-操作符" class="headerlink" title="属性存在性测试，“in” 操作符"></a>属性存在性测试，“in” 操作符</h3><p>相比于其他语言，JavaScript 的对象有一个需要注意的特性：能够被访问任何属性。即使属性不存在也不会报错！</p>
+<p>读取不存在的属性只会得到 undefined。所以我们可以很容易地判断一个属性是否存在：</p>
+<pre><code class="JavaScript">  let user = &#123;&#125;;
+  console.log(user.age === undefined) //true
+</code></pre>
+<p>这里还有一个特别的，检查属性是否存在的操作符 “in”。</p>
+<p>语法是：</p>
+<pre><code class="JavaScript">  &quot;key&quot; in object
+  let user = &#123;
+          name: &quot;White&quot;,
+          age: 8
+      &#125;;
+      console.log(&quot;name&quot; in user) //true
+      console.log(&quot;white&quot; in user) //fasle
+</code></pre>
+<h3 id="“for…in”-循环"><a href="#“for…in”-循环" class="headerlink" title="“for…in” 循环"></a>“for…in” 循环</h3><p>为了遍历一个对象的所有键（key），可以使用一个特殊形式的循环：for..in。这跟我们在前面学到的 for(;;) 循环是完全不一样的东西。</p>
+<pre><code class="JavaScript">  &quot;key&quot; in object
+  let user = &#123;
+          name: &quot;White&quot;,
+          age: 8
+      &#125;;
+      for(key in user)&#123;
+          //key
+          console.log(key) // name,age
+          // value
+          console.log(user[key])// White,8
+      &#125;
+</code></pre>
+<h3 id="像对象一样排序"><a href="#像对象一样排序" class="headerlink" title="像对象一样排序"></a>像对象一样排序</h3><p>整数属性会被进行排序，其他属性则按照创建的顺序显示</p>
+<h3 id="对象引用和复制"><a href="#对象引用和复制" class="headerlink" title="对象引用和复制"></a>对象引用和复制</h3><h3 id="可选链-“-”"><a href="#可选链-“-”" class="headerlink" title="可选链 “?.” "></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/optional-chaining">可选链 “?.” </a></h3><p>我们大多数用户的地址都存储在 user.address 中，街道地址存储在 user.address.street 中，但有些用户没有提供这些信息。</p>
+<pre><code class="JavaScript">let user = &#123;&#125;; // 一个没有 &quot;address&quot; 属性的 user 对象
+
+alert(user.address.street); // Error!
+</code></pre>
+<p>如果可选链 ?. 前面的部分是 undefined 或者 null，它会停止运算并返回该部分。</br><br>例如：value?.prop：</br></p>
+<ul>
+<li><p>如果value存在，则结果与value.prop相同</p>
+</li>
+<li><p>否则 （当value为undefined/null时)则返回undefined</p>
+<pre><code class="JavaScript">  let user = &#123;&#125;;// user 没有 address 属性
+  alert(user?.address?.street)
+
+  let user = null;
+
+  alert( user?.address ); // undefined
+  alert( user?.address.street ); // undefined
+</code></pre>
+<h4 id="短路效应"><a href="#短路效应" class="headerlink" title="短路效应"></a>短路效应</h4></li>
+</ul>
+<p>正如前面所说的，如果 ?. 左边部分不存在，就会立即停止运算（“短路效应”）。</p>
+<p>所以，如果后面有任何函数调用或者副作用，它们均不会执行。</p>
+<h4 id="其它变体：-，"><a href="#其它变体：-，" class="headerlink" title="其它变体：?.()，?.[]"></a>其它变体：?.()，?.[]</h4><ul>
+<li><p>将 ?.() 用于调用一个可能不存在的函数。</p>
+<pre><code class="JavaStript">
+  let userAdmin = &#123;
+  admin() &#123;
+    alert(&quot;I am admin&quot;);
+  &#125;
+&#125;;
+
+let userGuest = &#123;&#125;;
+
+userAdmin.admin?.(); // I am admin
+
+userGuest.admin?.(); // 啥都没有（没有这样的方法）
+</code></pre>
+<p>在这两行代码中，我们首先使用点符号（userAdmin.admin）来获取 admin 属性，因为用户对象一定存在，因此可以安全地读取它。</p>
+</li>
+</ul>
+<p>然后 ?.() 会检查它左边的部分：如果 admin 函数存在，那么就调用运行它（对于 userAdmin）。否则（对于 userGuest）运算停止，没有错误。</p>
+<p>此外，我们还可以将 ?. 跟 delete 一起使用：</p>
+<pre><code>  delete user?.name; // 如果 user 存在，则删除 user.name
+</code></pre>
+<h3 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/symbol">Symbol 类型</a></h3><h3 id="对象-—-原始值转换"><a href="#对象-—-原始值转换" class="headerlink" title="对象 — 原始值转换"></a>对象 — 原始值转换</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">White</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://whitedragon96.github.io/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">https://whitedragon96.github.io/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://whitedragon96.github.io" target="_blank">萤火之森</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/WeChatPay.png" target="_blank"><img class="post-qr-code-img" src="/img/WeChatPay.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/ALiPay.png" target="_blank"><img class="post-qr-code-img" src="/img/ALiPay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2.代码质量</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/17/1.JavaScript 基础知识/" title="1.JavaScript 基础知识"><img class="cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-17</div><div class="title">1.JavaScript 基础知识</div></div></a></div><div><a href="/2021/06/17/2.代码质量/" title="2.代码质量"><img class="cover" src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-17</div><div class="title">2.代码质量</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/2000.svg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">White</div><div class="author-info__description">第一次的遇见，便注定了是永生</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WhiteDragon96"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WhiteDragon96" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/C805609108@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">👋 Hi, I’m @WhiteDragon96</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">Object（对象）：基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%8B%AC%E5%8F%B7"><span class="toc-number">1.1.1.</span> <span class="toc-text">方括号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.2.</span> <span class="toc-text">计算属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E7%AE%80%E5%86%99"><span class="toc-number">1.2.</span> <span class="toc-text">属性值简写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%AD%98%E5%9C%A8%E6%80%A7%E6%B5%8B%E8%AF%95%EF%BC%8C%E2%80%9Cin%E2%80%9D-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">1.3.</span> <span class="toc-text">属性存在性测试，“in” 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9Cfor%E2%80%A6in%E2%80%9D-%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.4.</span> <span class="toc-text">“for…in” 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%83%8F%E5%AF%B9%E8%B1%A1%E4%B8%80%E6%A0%B7%E6%8E%92%E5%BA%8F"><span class="toc-number">1.5.</span> <span class="toc-text">像对象一样排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8%E5%92%8C%E5%A4%8D%E5%88%B6"><span class="toc-number">1.6.</span> <span class="toc-text">对象引用和复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E9%93%BE-%E2%80%9C-%E2%80%9D"><span class="toc-number">1.7.</span> <span class="toc-text">可选链 “?.” </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%E6%95%88%E5%BA%94"><span class="toc-number">1.7.1.</span> <span class="toc-text">短路效应</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%8F%98%E4%BD%93%EF%BC%9A-%EF%BC%8C"><span class="toc-number">1.7.2.</span> <span class="toc-text">其它变体：?.()，?.[]</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbol-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.8.</span> <span class="toc-text">Symbol 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1-%E2%80%94-%E5%8E%9F%E5%A7%8B%E5%80%BC%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.9.</span> <span class="toc-text">对象 — 原始值转换</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="3.Object对象基础知识"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.Object对象基础知识"/></a><div class="content"><a class="title" href="/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="3.Object对象基础知识">3.Object对象基础知识</a><time datetime="2021-06-17T09:06:12.412Z" title="发表于 2021-06-17 17:06:12">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" title="2.代码质量"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2.代码质量"/></a><div class="content"><a class="title" href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" title="2.代码质量">2.代码质量</a><time datetime="2021-06-17T09:05:22.272Z" title="发表于 2021-06-17 17:05:22">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="1.JavaScript 基础知识"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.JavaScript 基础知识"/></a><div class="content"><a class="title" href="/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="1.JavaScript 基础知识">1.JavaScript 基础知识</a><time datetime="2021-06-17T02:49:26.428Z" title="发表于 2021-06-17 10:49:26">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/17/matter/" title="页面标题"><img src="https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgs2019-year-end-summary.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="页面标题"/></a><div class="content"><a class="title" href="/2021/06/17/matter/" title="页面标题">页面标题</a><time datetime="2021-06-16T16:00:00.000Z" title="发表于 2021-06-17 00:00:00">2021-06-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/15/hello-world/" title="Hello World"><img src="/img/%E7%9A%AE%E5%8D%A1%E4%B8%98.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/06/15/hello-world/" title="Hello World">Hello World</a><time datetime="2021-06-15T03:02:40.169Z" title="发表于 2021-06-15 11:02:40">2021-06-15</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/latias94/blog-images@main/top/frankorz/blog/imgstransformation-cover.gif')"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By White</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://whitedragon96.github.io/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/'
+    this.page.identifier = '2021/06/17/3.Object（对象）：基础知识/'
+    this.page.title = '3.Object对象基础知识'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://white-7.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

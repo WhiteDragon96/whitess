@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>3.Object对象基础知识</title>
+      <link href="/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <url>/2021/06/17/3.Object%EF%BC%88%E5%AF%B9%E8%B1%A1%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#object%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">Object（对象）：基础知识</a><ul><li><a href="#%E5%AF%B9%E8%B1%A1">对象</a><ul><li><a href="#%E6%96%B9%E6%8B%AC%E5%8F%B7">方括号</a></li><li><a href="#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">计算属性</a></li></ul></li><li><a href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E7%AE%80%E5%86%99">属性值简写</a></li><li><a href="#%E5%B1%9E%E6%80%A7%E5%AD%98%E5%9C%A8%E6%80%A7%E6%B5%8B%E8%AF%95in-%E6%93%8D%E4%BD%9C%E7%AC%A6">属性存在性测试，“in” 操作符</a></li><li><a href="#forin-%E5%BE%AA%E7%8E%AF">“for…in” 循环</a></li><li><a href="#%E5%83%8F%E5%AF%B9%E8%B1%A1%E4%B8%80%E6%A0%B7%E6%8E%92%E5%BA%8F">像对象一样排序</a></li><li><a href="#%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8%E5%92%8C%E5%A4%8D%E5%88%B6">对象引用和复制</a></li><li><a href="#%E5%8F%AF%E9%80%89%E9%93%BE--">可选链 “?.” </a><ul><li><a href="#%E7%9F%AD%E8%B7%AF%E6%95%88%E5%BA%94">短路效应</a></li><li><a href="#%E5%85%B6%E5%AE%83%E5%8F%98%E4%BD%93">其它变体：?.()，?.[]</a></li></ul></li><li><a href="#symbol-%E7%B1%BB%E5%9E%8B">Symbol 类型</a></li><li><a href="#%E5%AF%B9%E8%B1%A1--%E5%8E%9F%E5%A7%8B%E5%80%BC%E8%BD%AC%E6%8D%A2">对象 — 原始值转换</a></li></ul></li></ul><h2 id="Object（对象）：基础知识"><a href="#Object（对象）：基础知识" class="headerlink" title="Object（对象）：基础知识"></a>Object（对象）：基础知识</h2><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>我们可以通过使用带有可选 属性列表 的花括号 {…} 来创建对象。一个属性就是一个键值对（“key: value”），其中键（key）是一个字符串（也叫做属性名），值（value）可以是任何值。</p><pre><code class="JavaScript">      let user = new Object(); // “构造函数” 的语法      let user = &#123;     // 一个对象          name: &quot;John&quot;,  // 键 &quot;name&quot;，值 &quot;John&quot;          age: 30,        // 键 &quot;age&quot;，值 30          &quot;like bird&quot; : true,      &#125;;</code></pre><p>属性有键（或者也可以叫做“名字”或“标识符”），位于冒号 “:” 的前面，值在冒号的右边。</p><p>在 user 对象中，有两个属性：</p><ol><li>第一个的键是 “name”，值是 “John”。</li><li>第二个的键是 “age”，值是 30。</li></ol><h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>对于多词属性，点操作就不能用了：</p><pre><code class="JavaScript">  // 这将提示有语法错误  user.likes birds = true</code></pre><pre><code class="JavaScript">  有另一种方法，就是使用方括号，可用于任何字符串：  let user = &#123;&#125;;  // 设置  user[&quot;likes birds&quot;] = true;  // 读取  alert(user[&quot;likes birds&quot;]); // true  // 删除  delete user[&quot;likes birds&quot;];</code></pre><p>在这里，变量 key 可以是程序运行时计算得到的，也可以是根据用户的输入得到的。然后我们可以用它来访问属性。这给了我们很大的灵活性。</p><pre><code class="JavaScript">  let user = &#123;  name: &quot;John&quot;,  age: 30  &#125;;  let key = prompt(&quot;What do you want to know about the user?&quot;, &quot;name&quot;);  // 访问变量  alert( user[key] ); // John（如果输入 &quot;name&quot;）  //点符号不能以类似的方式使用：  alert( user.key ) // undefined</code></pre><h4 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h4><p>当创建一个对象时，我们可以在对象字面量中使用方括号。这叫做 计算属性。</p><pre><code class="JavaScript">  let fruit = prompt(&quot;Which fruit to buy?&quot;, &quot;apple&quot;);  let bag = &#123;  [fruit]: 5, // 属性名是从 fruit 变量中得到的  &#125;;  alert( bag.apple ); // 5 如果 fruit=&quot;apple&quot;</code></pre><p>方括号比点符号更强大。它允许任何属性名和变量，但写起来也更加麻烦。</p><p>所以，大部分时间里，当属性名是已知且简单的时候，就使用点符号。如果我们需要一些更复杂的内容，那么就用方括号。</p><h3 id="属性值简写"><a href="#属性值简写" class="headerlink" title="属性值简写"></a>属性值简写</h3><p>在实际开发中，我们通常用已存在的变量当做属性名。</p><pre><code class="JavaScript">  &lt;script&gt;      function makeUser(name,age)&#123;          return&#123;              name: name,              age: age,              // 其他属性          &#125;      &#125;      let user = makeUser(&quot;John&quot;,18)      console.log(user) //&#123;name: &quot;John&quot;, age: 18&#125;  &lt;/script&gt;</code></pre><p>在上面的例子中，属性名跟变量名一样。这种通过变量生成属性的应用场景很常见，在这有一种特殊的 属性值缩写 方法，使属性名变得更短。</p><p>可以用 name 来代替 name:name 像下面那样：</p><pre><code class="JavaScript">  function makeUser(name, age) &#123;  return &#123;      name, // 与 name: name 相同      age,  // 与 age: age 相同      // ...  &#125;;  &#125;</code></pre><h3 id="属性存在性测试，“in”-操作符"><a href="#属性存在性测试，“in”-操作符" class="headerlink" title="属性存在性测试，“in” 操作符"></a>属性存在性测试，“in” 操作符</h3><p>相比于其他语言，JavaScript 的对象有一个需要注意的特性：能够被访问任何属性。即使属性不存在也不会报错！</p><p>读取不存在的属性只会得到 undefined。所以我们可以很容易地判断一个属性是否存在：</p><pre><code class="JavaScript">  let user = &#123;&#125;;  console.log(user.age === undefined) //true</code></pre><p>这里还有一个特别的，检查属性是否存在的操作符 “in”。</p><p>语法是：</p><pre><code class="JavaScript">  &quot;key&quot; in object  let user = &#123;          name: &quot;White&quot;,          age: 8      &#125;;      console.log(&quot;name&quot; in user) //true      console.log(&quot;white&quot; in user) //fasle</code></pre><h3 id="“for…in”-循环"><a href="#“for…in”-循环" class="headerlink" title="“for…in” 循环"></a>“for…in” 循环</h3><p>为了遍历一个对象的所有键（key），可以使用一个特殊形式的循环：for..in。这跟我们在前面学到的 for(;;) 循环是完全不一样的东西。</p><pre><code class="JavaScript">  &quot;key&quot; in object  let user = &#123;          name: &quot;White&quot;,          age: 8      &#125;;      for(key in user)&#123;          //key          console.log(key) // name,age          // value          console.log(user[key])// White,8      &#125;</code></pre><h3 id="像对象一样排序"><a href="#像对象一样排序" class="headerlink" title="像对象一样排序"></a>像对象一样排序</h3><p>整数属性会被进行排序，其他属性则按照创建的顺序显示</p><h3 id="对象引用和复制"><a href="#对象引用和复制" class="headerlink" title="对象引用和复制"></a>对象引用和复制</h3><h3 id="可选链-“-”"><a href="#可选链-“-”" class="headerlink" title="可选链 “?.” "></a><a href="https://zh.javascript.info/optional-chaining">可选链 “?.” </a></h3><p>我们大多数用户的地址都存储在 user.address 中，街道地址存储在 user.address.street 中，但有些用户没有提供这些信息。</p><pre><code class="JavaScript">let user = &#123;&#125;; // 一个没有 &quot;address&quot; 属性的 user 对象alert(user.address.street); // Error!</code></pre><p>如果可选链 ?. 前面的部分是 undefined 或者 null，它会停止运算并返回该部分。</br><br>例如：value?.prop：</br></p><ul><li><p>如果value存在，则结果与value.prop相同</p></li><li><p>否则 （当value为undefined/null时)则返回undefined</p><pre><code class="JavaScript">  let user = &#123;&#125;;// user 没有 address 属性  alert(user?.address?.street)  let user = null;  alert( user?.address ); // undefined  alert( user?.address.street ); // undefined</code></pre><h4 id="短路效应"><a href="#短路效应" class="headerlink" title="短路效应"></a>短路效应</h4></li></ul><p>正如前面所说的，如果 ?. 左边部分不存在，就会立即停止运算（“短路效应”）。</p><p>所以，如果后面有任何函数调用或者副作用，它们均不会执行。</p><h4 id="其它变体：-，"><a href="#其它变体：-，" class="headerlink" title="其它变体：?.()，?.[]"></a>其它变体：?.()，?.[]</h4><ul><li><p>将 ?.() 用于调用一个可能不存在的函数。</p><pre><code class="JavaStript">  let userAdmin = &#123;  admin() &#123;    alert(&quot;I am admin&quot;);  &#125;&#125;;let userGuest = &#123;&#125;;userAdmin.admin?.(); // I am adminuserGuest.admin?.(); // 啥都没有（没有这样的方法）</code></pre><p>在这两行代码中，我们首先使用点符号（userAdmin.admin）来获取 admin 属性，因为用户对象一定存在，因此可以安全地读取它。</p></li></ul><p>然后 ?.() 会检查它左边的部分：如果 admin 函数存在，那么就调用运行它（对于 userAdmin）。否则（对于 userGuest）运算停止，没有错误。</p><p>此外，我们还可以将 ?. 跟 delete 一起使用：</p><pre><code>  delete user?.name; // 如果 user 存在，则删除 user.name</code></pre><h3 id="Symbol-类型"><a href="#Symbol-类型" class="headerlink" title="Symbol 类型"></a><a href="https://zh.javascript.info/symbol">Symbol 类型</a></h3><h3 id="对象-—-原始值转换"><a href="#对象-—-原始值转换" class="headerlink" title="对象 — 原始值转换"></a>对象 — 原始值转换</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2.代码质量</title>
+      <link href="/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/"/>
+      <url>/2021/06/17/2.%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#%E5%9C%A8chrome%E4%B8%AD%E8%B0%83%E8%AF%95">在Chrome中调试</a><ul><li><a href="#%E8%B5%84%E6%BA%90sources%E9%9D%A2%E6%9D%BF">“资源（Sources）”面板</a></li></ul></li><li><a href="#%E6%8E%A7%E5%88%B6%E5%8F%B0console">控制台（Console）</a></li><li><a href="#%E6%96%AD%E7%82%B9breakpoints">断点（Breakpoints）</a><ul><li><a href="#debugger-%E5%91%BD%E4%BB%A4">Debugger 命令</a></li><li><a href="#%E6%9A%82%E5%81%9C%E5%B9%B6%E6%9F%A5%E7%9C%8B">暂停并查看</a></li><li><a href="#%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">日志记录</a></li></ul></li><li><a href="#%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC">代码风格</a><ul><li><a href="#%E5%87%BD%E6%95%B0%E4%BD%8D%E7%BD%AE">函数位置</a></li></ul></li><li><a href="#%E4%BD%BF%E7%94%A8-mocha-%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95">使用 Mocha 进行自动化测试</a></li></ul><h3 id="在Chrome中调试"><a href="#在Chrome中调试" class="headerlink" title="在Chrome中调试"></a>在Chrome中调试</h3><h4 id="“资源（Sources）”面板"><a href="#“资源（Sources）”面板" class="headerlink" title="“资源（Sources）”面板"></a>“资源（Sources）”面板</h4><ul><li>使用快捷键 F12（Mac：Cmd+Opt+I）打开开发者工具。</li><li>选择 Sources（资源） 面板。<br><img src="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/imgWhite_2021-04-08_20-55-01.png"></li></ul><p>资源（Sources）面板包含三个部分：</p><ol><li>文件导航（File Navigator） 区域列出了 HTML、JavaScript、CSS 和包括图片在内的其他依附于此页面的文件。Chrome 扩展程序也会显示在这。</li><li>代码编辑（Code Editor） 区域展示源码。</li><li>JavaScript 调试（JavaScript Debugging） 区域是用于调试的</li></ol><h3 id="控制台（Console）"><a href="#控制台（Console）" class="headerlink" title="控制台（Console）"></a>控制台（Console）</h3><p>我们可以输入一些命令然后按下 Enter 来执行。语句执行完毕之后，其执行结果会显示在下面。</p><p> 例如，1+2 将会返回 3，hello(“debugger”) 函数什么也不返回，因此结果是 undefined：<br> <img src="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/img20210408210225.png"></p><h3 id="断点（Breakpoints）"><a href="#断点（Breakpoints）" class="headerlink" title="断点（Breakpoints）"></a>断点（Breakpoints）</h3><p><img src="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/img20210409091818.png"></p><p>断点 是调试器会自动暂停 JavaScript 执行的地方。</p><h4 id="Debugger-命令"><a href="#Debugger-命令" class="headerlink" title="Debugger 命令"></a>Debugger 命令</h4><p>我们也可以使用 debugger 命令来暂停代码，像这样：</p><pre><code class="javaScript">  function hello(name) &#123;      let phrase = `Hello, $&#123;name&#125;!`;      debugger;  // &lt;-- 调试器会在这停止      say(phrase);  &#125;</code></pre><h4 id="暂停并查看"><a href="#暂停并查看" class="headerlink" title="暂停并查看"></a>暂停并查看</h4><p><img src="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/img20210409092851.png"></p><ol><li>察看（Watch） —— 显示任意表达式的当前值。 </br><br> 你可以点击加号 + 然后输入一个表达式。调试器将随时显示它的值，并在执行过程中自动重新计算该表达式。</li><li>调用栈（Call Stack） —— 显示嵌套的调用链。 </br><br> 此时，调试器正在 hello() 的调用链中，被 index.html 中的一个脚本调用（这里没有函数，因此显示 “anonymous”）</li><li>作用域（Scope） —— 显示当前的变量。</br><br> local 显示当前函数中的变量，你还可以在源代码中看到它们的值高亮显示了出来。</br><br> Global 显示全局变量（不在任何函数中）。<h4 id="日志记录"><a href="#日志记录" class="headerlink" title="日志记录"></a>日志记录</h4><pre><code class="JavaScript"> // 打开控制台来查看for (let i = 0; i &lt; 5; i++) &#123; console.log(&quot;value&quot;, i);&#125;</code></pre></li></ol><h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><p><img src="https://raw.githubusercontent.com/WhiteDragon96/ImgCloud/main/data/img20210409181905.png"></p><h4 id="函数位置"><a href="#函数位置" class="headerlink" title="函数位置"></a>函数位置</h4><ol><li>在调用这些函数的代码的 上方 声明这些函数：<br>```JavaScript<br>   // 函数声明<br>function createElement() {<br>…<br>}</li></ol><p>function setHandler(elem) {<br>  …<br>}</p><p>function walkAround() {<br>  …<br>}</p><p>// 调用函数的代码<br>let elem = createElement();<br>setHandler(elem);<br>walkAround();</p><pre><code>2. 先写调用代码，再写函数 ```JavaScript      // 调用函数的代码  let elem = createElement();  setHandler(elem);  walkAround();  // --- 辅助函数 ---  function createElement() &#123;    ...  &#125;  function setHandler(elem) &#123;    ...  &#125;  function walkAround() &#123;    ...  &#125;</code></pre><h3 id="使用-Mocha-进行自动化测试"><a href="#使用-Mocha-进行自动化测试" class="headerlink" title="使用 Mocha 进行自动化测试"></a><a href="https://zh.javascript.info/testing-mocha">使用 Mocha 进行自动化测试</a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1.JavaScript 基础知识</title>
+      <link href="/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <url>/2021/06/17/1.JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#%E5%8F%98%E9%87%8F">变量</a></li><li><a href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">数据类型</a></li><li><a href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F">严格模式</a></li><li><a href="#%E4%BA%A4%E4%BA%92alertprompt-%E5%92%8C-confirm">交互：alert、prompt 和 confirm</a></li><li><a href="#%E5%9F%BA%E7%A1%80%E8%BF%90%E7%AE%97%E7%AC%A6%E6%95%B0%E5%AD%A6">基础运算符，数学</a></li><li><a href="#%E5%80%BC%E7%9A%84%E6%AF%94%E8%BE%83">值的比较</a></li><li><a href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AFif-%E5%92%8C-">条件分支：if 和 ‘?’</a></li><li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑运算符</a></li><li><a href="#%E5%87%BD%E6%95%B0">函数</a><ul><li><a href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">回调函数</a></li><li><a href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0">匿名函数</a></li></ul></li><li><a href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></li><li><a href="#javascript-%E7%89%B9%E6%80%A7">JavaScript 特性</a></li></ul><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>我们可以使用 var、let 或 const 声明变量来存储数据。</p><ul><li>let — 现代的变量声明方式。</li><li>var — 老旧的变量声明方式。一般情况下，我们不会再使用它。</li><li>const — 类似于 let，但是变量的值无法被修改。</li></ul><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>JavaScript 中有 8 种基本的数据类型（注：7 种原始类型和 1 种引用类型）。</p><ul><li><p>Number类型，代表整数和浮点数。</p></li><li><p>BigInt 类型，number” 类型无法表示大于 (253-1)，或小于 -(253-1) 的整数</p></li><li><p>String类型、Boolean类型</p></li><li><p>object 类型和 symbol 类型，object 则用于储存数据集合和更复杂的实体。</p></li><li><p>typeof 运算符，typeof 运算符返回参数的类型 </p><pre><code>typeof 0 // &quot;number&quot;typeof 10n // &quot;bigint&quot;  </code></pre><h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><p>为了完全启用现代 JavaScript 的所有特性，我们应该在脚本顶部写上 “use strict” 指令。</p><pre><code>  &#39;use strict&#39;;  ...</code></pre><h3 id="交互：alert、prompt-和-confirm"><a href="#交互：alert、prompt-和-confirm" class="headerlink" title="交互：alert、prompt 和 confirm"></a>交互：alert、prompt 和 confirm</h3></li><li><p>alert  弹出的这个带有信息的小窗口被称为 模态窗。“modal” 意味着用户不能与页面的其他部分（例如点击其他按钮等）进行交互，直到他们处理完窗口。在上面示例这种情况下 —— 直到用户点击“确定”按钮。</p></li><li><p>prompt，title： 显示给用户的文本，default：可选的第二个参数，指定 input 框的初始值。</p><pre><code>let age = prompt(&#39;How old are you?&#39;, 100);alert(`You are $&#123;age&#125; years old!`); // You are 100 years old!</code></pre></li><li><p>confirm， 函数显示一个带有 question 以及确定和取消两个按钮的模态窗口。点击确定返回 true，点击取消返回 false。</p><pre><code>  let isBoss = confirm(&quot;Are you the boss?&quot;);  alert( isBoss ); // 如果“确定”按钮被按下，则显示 true</code></pre><h3 id="基础运算符，数学"><a href="#基础运算符，数学" class="headerlink" title="基础运算符，数学"></a>基础运算符，数学</h3><p>支持以下数学运算：</p></li><li><p>加法 +,</p></li><li><p>减法 -,</p></li><li><p>乘法 *,</p></li><li><p>除法 /,</p></li><li><p>取余 %,</p></li><li><p>求幂 **.</p><pre><code>alert( 2 ** 2 ); // 4  (2 * 2，自乘 2 次)alert( 4 ** (1/2) ); // 2（1/2 次方与平方根相同)</code></pre><h3 id="值的比较"><a href="#值的比较" class="headerlink" title="值的比较"></a>值的比较</h3><ul><li><code>&gt;</code>  &lt; == !=<pre><code>== 存在一个问题，它不能区分出 0 和 falsealert( 0 == false ); // truealert( &#39;&#39; == false ); // true</code></pre>这是因为在比较不同类型的值时，处于相等判断符号 == 两侧的值会先被转化为数字。空字符串和 false 也是如此，转化后它们都为数字 0。</li><li>严格相等运算符 === 在进行比较时不会做任何的类型转换。<pre><code>    alert( 0 === false ); // false，因为被比较值的数据类型不同</code></pre></li></ul></li></ul><h3 id="条件分支：if-和-‘-’"><a href="#条件分支：if-和-‘-’" class="headerlink" title="条件分支：if 和 ‘?’"></a>条件分支：if 和 ‘?’</h3><ul><li>if(…) 语句计算括号里的条件表达式，如果计算结果是 true，就会执行对应的代码块。<pre><code>if (&quot;0&quot;) &#123; // 只要字符串不为空，都是true alert( &#39;Hello&#39; );&#125;   </code></pre></li><li> 条件运算符 ‘?’,三元运算符</li></ul><pre><code>  let result = condition ? value1 : value2;</code></pre><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>JavaScript 中有三个逻辑运算符：||（或），&amp;&amp;（与），!（非）。</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><pre><code>  我们的新函数可以通过名称调用：showMessage()。  function showMessage() &#123;   alert( &#39;Hello everyone!&#39; );  &#125;  showMessage();  showMessage();</code></pre><ul><li>作为参数传递给函数的值，会被复制到函数的局部变量。</li><li>函数可以访问外部变量。但它只能从内到外起作用。函数外部的代码看不到函数内的局部变量。</li><li>函数可以返回值。如果没有返回值，则其返回的结果是 undefined。<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4>我们写一个包含三个参数的函数 ask(question, yes, no)：</li></ul><p>question<br>关于问题的文本</p><p>yes<br>当回答为 “Yes” 时，要运行的脚本</p><p>no<br>当回答为 “No” 时，要运行的脚本</p><p>函数需要提出 question（问题），并根据用户的回答，调用 yes() 或 no()：</p><pre><code>  function ask(question, yes, no) &#123;if (confirm(question)) yes()else no();&#125;function showOk() &#123;alert( &quot;You agreed.&quot; );&#125;function showCancel() &#123;alert( &quot;You canceled the execution.&quot; );&#125;// 用法：函数 showOk 和 showCancel 被作为参数传入到 askask(&quot;Do you agree?&quot;, showOk, showCancel);</code></pre><h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p>  这里直接在 ask(…) 调用内进行函数声明。这两个函数没有名字</p><pre><code>  ask(&quot;Do you agree?&quot;,function() &#123; alert(&quot;You agreed.&quot;); &#125;,function() &#123; alert(&quot;You canceled the execution.&quot;); &#125;);</code></pre><ul><li>函数声明：在主代码流中声明为单独的语句的函数。<pre><code>  // 函数声明  function sum(a, b) &#123;  return a + b;  &#125;</code></pre></li><li>函数表达式：在一个表达式中或另一个语法结构中创建的函数。下面这个函数是在赋值表达式 = 右侧创建的<pre><code>      // 函数表达式  let sum = function(a, b) &#123;  return a + b;  &#125;;</code></pre></li></ul><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><pre><code>  let sum = (a, b) =&gt; a + b;  /* 这个箭头函数是下面这个函数的更短的版本：  let sum = function(a, b) &#123;  return a + b;  &#125;; */  // 当只有一个参数时 可以去了括号  let alone = a =&gt; console.log(a)  alone(666);  // 没有参数时要保留括号  let empty = () =&gt; console.log(&quot;empty paramter&quot;)  empty();</code></pre><h3 id="JavaScript-特性"><a href="#JavaScript-特性" class="headerlink" title="JavaScript 特性"></a>JavaScript 特性</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>页面标题</title>
+      <link href="/2021/06/17/matter/"/>
+      <url>/2021/06/17/matter/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2021/06/15/hello-world/"/>
+      <url>/2021/06/15/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
